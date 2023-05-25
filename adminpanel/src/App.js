@@ -1,15 +1,13 @@
-// App.js
-
-import React, { useEffect } from "react";
-import makeTestAPICall from "./api";
+import React from 'react';
+import Driver from './components/Driver';
 
 const App = () => {
-  useEffect(() => {
-    // Make the test API call on component mount
-    makeTestAPICall();
-  }, []);
-
-  return <div>App Component</div>;
+  return (
+    <div>
+      <h1>Welcome to the App!</h1>
+    <Driver />
+    </div>
+  );
 };
 
 export default App;
