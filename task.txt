@@ -1,0 +1,22 @@
+Real-time Firebase database
+The admin panel will have the following features:
+
+Driver management (create, read, update, delete)
+User management (create, read, update, delete)
+Rider history with status (pending, completed, declined)
+Active drivers
+Admin login and logout
+Please ensure that you utilize the best and latest approaches of 2023. Put all APIs together and aim for efficient code.
+
+Project structure:
+src
+├── components
+│ ├── AdminLogin.js
+│ ├── AdminPanel.js
+│ ├── Driver.js
+│ ├── RiderHistory.js
+│ └── Users.js
+├── firebase.js
+├── App.js
+└── index.js
+└── Api.js

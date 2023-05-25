@@ -1,0 +1,8 @@
+mkdir src\components
+type nul > src\components\AdminLogin.js
+type nul > src\components\AdminPanel.js
+type nul > src\components\Driver.js
+type nul > src\components\RiderHistory.js
+type nul > src\components\Users.js
+type nul > src\firebase.js
+type nul > src\App.js
