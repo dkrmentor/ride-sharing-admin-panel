@@ -16,7 +16,7 @@ const AdminLogin = () => {
   };
 
   return (
-    <div className="login-container">
+    <div className="login">
       <div className="login-box">
         <h2>Admin Login</h2>
         <input
