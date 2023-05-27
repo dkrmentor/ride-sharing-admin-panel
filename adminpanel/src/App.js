@@ -6,6 +6,7 @@ import RiderHistory from "./components/RiderHistory";
 import ActiveDrivers from "./components/ActiveDrivers";
 import Layout from "./components/Layout";
 import Users from "./components/Users";
+import "./App.css";
 
 const App = () => {
   return (

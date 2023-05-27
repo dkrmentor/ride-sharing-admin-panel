@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getRiderHistory } from '../api';
+import "../App.css"
 
 const RiderHistory = () => {
   const [riderHistory, setRiderHistory] = useState([]);

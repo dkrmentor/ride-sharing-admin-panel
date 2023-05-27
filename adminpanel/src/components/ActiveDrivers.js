@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getActiveDrivers } from '../api';
-
+import "../App.css"
 const ActiveDrivers = () => {
   const [activeDrivers, setActiveDrivers] = useState([]);
 
