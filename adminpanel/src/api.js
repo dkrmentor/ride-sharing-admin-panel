@@ -1,60 +1,84 @@
-import firebase from './firebase';
+import database from "./firebase";
 
-// Get a reference to the Firebase database
-const database = firebase.database();
-
-// Driver management
-export const createDriver = (driver) => {
-  const newDriverRef = database.ref('drivers').push();
-  newDriverRef.set(driver);
-  return newDriverRef.key;
+// Fetch drivers
+export const getDrivers = async () => {
+  try {
+    const snapshot = await database.ref("drivers").once("value");
+    const driversData = snapshot.val() || {};
+    const driversArray = Object.values(driversData);
+    console.log("Drivers:", driversArray); // Log the drivers array
+    return driversArray;
+  } catch (error) {
+    console.log("Error fetching drivers:", error);
+    return [];
+  }
 };
 
-export const readDriver = (driverId) => {
-  return database.ref(`drivers/${driverId}`).once('value').then((snapshot) => {
-    return snapshot.val();
-  });
+// Fetch users
+export const getUsers = async () => {
+  try {
+    const snapshot = await database.ref("users").once("value");
+    const usersData = snapshot.val() || {};
+    const usersArray = Object.values(usersData);
+    console.log("Users:", usersArray); // Log the users array
+    return usersArray;
+  } catch (error) {
+    console.log("Error fetching users:", error);
+    return [];
+  }
 };
 
-export const updateDriver = (driverId, updates) => {
-  return database.ref(`drivers/${driverId}`).update(updates);
+// Fetch rider history
+export const getRiderHistory = async () => {
+  try {
+    const snapshot = await database.ref("rider_history").once("value");
+    const riderHistoryData = snapshot.val() || {};
+    const riderHistoryArray = Object.values(riderHistoryData);
+    console.log("Rider History:", riderHistoryArray); // Log the rider history array
+    return riderHistoryArray;
+  } catch (error) {
+    console.log("Error fetching rider history:", error);
+    return [];
+  }
 };
 
-export const deleteDriver = (driverId) => {
-  return database.ref(`drivers/${driverId}`).remove();
+// Delete a driver
+export const deleteDriver = async (driverId) => {
+  try {
+    await database.ref(`drivers/${driverId}`).remove();
+    console.log("Driver deleted successfully");
+    return true;
+  } catch (error) {
+    console.log("Error deleting driver:", error);
+    return false;
+  }
 };
 
-// User management
-export const createUser = (user) => {
-  const newUserRef = database.ref('users').push();
-  newUserRef.set(user);
-  return newUserRef.key;
+// Delete a user
+export const deleteUser = async (userId) => {
+  try {
+    await database.ref(`users/${userId}`).remove();
+    console.log("User deleted successfully");
+    return true;
+  } catch (error) {
+    console.log("Error deleting user:", error);
+    return false;
+  }
 };
 
-export const readUser = (userId) => {
-  return database.ref(`users/${userId}`).once('value').then((snapshot) => {
-    return snapshot.val();
-  });
-};
-
-export const updateUser = (userId, updates) => {
-  return database.ref(`users/${userId}`).update(updates);
-};
-
-export const deleteUser = (userId) => {
-  return database.ref(`users/${userId}`).remove();
-};
-
-// Rider history
-export const getRiderHistory = () => {
-  return database.ref('riderHistory').once('value').then((snapshot) => {
-    return snapshot.val();
-  });
-};
-
-// Active drivers
-export const getActiveDrivers = () => {
-  return database.ref('activeDrivers').once('value').then((snapshot) => {
-    return snapshot.val();
-  });
+// Get active drivers
+export const getActiveDrivers = async () => {
+  try {
+    const snapshot = await database.ref("activeDrivers").once("value");
+    const activeDriversData = snapshot.val() || {};
+    const activeDriversArray = Object.entries(activeDriversData).map(([driverId, driverData]) => ({
+      id: driverId,
+      ...driverData
+    }));
+    console.log("Active Drivers:", activeDriversArray); // Log the active drivers array
+    return activeDriversArray;
+  } catch (error) {
+    console.log("Error fetching active drivers:", error);
+    return [];
+  }
 };

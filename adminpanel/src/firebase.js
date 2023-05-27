@@ -1,11 +1,7 @@
-// Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+// firebase.js
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/database';
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyDfkKnlcrf6XJ3ZazdJTr7dj9ehrKApoSc",
   authDomain: "kiet-ride-sharing-app.firebaseapp.com",
@@ -17,9 +13,9 @@ const firebaseConfig = {
   measurementId: "G-NEEFSFZ172"
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+firebase.initializeApp(firebaseConfig);
+
+export const database = firebase.database();
 
 
-export default app;
+export default database;
