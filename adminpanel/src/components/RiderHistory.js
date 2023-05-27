@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { getRiderHistory } from '../api';
-import "../App.css"
 
 const RiderHistory = () => {
   const [riderHistory, setRiderHistory] = useState([]);
@@ -12,10 +11,10 @@ const RiderHistory = () => {
   }, []);
 
   return (
-    <div>
+    <div className="content-section">
       <h3>Rider History</h3>
       {riderHistory.map((ride) => (
-        <div key={ride.user_id}>
+        <div className="ride-item" key={ride.user_id}>
           <h4>Ride ID: {ride.user_id}</h4>
           <p>Status: {ride.status}</p>
           <p>Passenger Name: {ride.passenger_name}</p>

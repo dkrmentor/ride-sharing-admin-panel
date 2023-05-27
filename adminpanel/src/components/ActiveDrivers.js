@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { getActiveDrivers } from '../api';
-import "../App.css"
+
 const ActiveDrivers = () => {
   const [activeDrivers, setActiveDrivers] = useState([]);
 
@@ -11,10 +11,10 @@ const ActiveDrivers = () => {
   }, []);
 
   return (
-    <div>
+    <div className="content-section">
       <h3>Active Drivers</h3>
       {activeDrivers.map((driver) => (
-        <div key={driver.id}>
+        <div className="driver-item" key={driver.id}>
           <p>{driver.latitude}</p>
           <p>{driver.longitude}</p>
         </div>
@@ -24,6 +24,3 @@ const ActiveDrivers = () => {
 };
 
 export default ActiveDrivers;
-
-
-

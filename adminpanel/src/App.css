@@ -1,0 +1,115 @@
+/* App.css */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    display: flex;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+  }
+  
+  .logo {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo img {
+    width: 80%;
+    height: auto;
+  }
+  .layout-container{
+    display: flex;
+  }
+  
+  .divider {
+    height: 1px;
+    background-color: #fff;
+    margin-bottom: 20px;
+  }
+  
+  .nav-menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-menu li {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .nav-menu li:hover {
+    background-color: #555;
+  }
+  
+  .nav-menu li span {
+    margin-left: 10px;
+  }
+  
+  .content-section {
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 10px;
+  }
+  
+  .user-item {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+  }
+  
+  .user-actions button {
+    margin-left: 10px;
+  }
+  
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-box {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .login-box h2 {
+    margin-bottom: 20px;
+  }
+  
+  .login-box input {
+    width: 80%;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .active-drivers .driver-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+  }
+  

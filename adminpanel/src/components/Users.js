@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { getUsers, deleteUser, createUser, updateUser } from "../api";
-import "../App.css"
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -67,9 +66,9 @@ const Users = () => {
   };
 
   return (
-    <div>
+    <div className="content-section">
       <h3>Users</h3>
-      <div>
+      <div className="form-group">
         <label>Name:</label>
         <input
           type="text"
@@ -77,7 +76,7 @@ const Users = () => {
           onChange={(e) => setName(e.target.value)}
         />
       </div>
-      <div>
+      <div className="form-group">
         <label>Email:</label>
         <input
           type="email"
@@ -85,7 +84,7 @@ const Users = () => {
           onChange={(e) => setEmail(e.target.value)}
         />
       </div>
-      <div>
+      <div className="form-group">
         <label>Phone Number:</label>
         <input
           type="text"
@@ -97,12 +96,14 @@ const Users = () => {
         {editUserId ? "Update User" : "Create User"}
       </button>
       {users.map((user) => (
-        <div key={user.id}>
+        <div className="user-item" key={user.id}>
           <h4>{user.name}</h4>
           <p>{user.email}</p>
           <p>{user.phoneNumber}</p>
-          <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
-          <button onClick={() => handleEditUser(user.id)}>Edit</button>
+          <div className="user-actions">
+            <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+            <button onClick={() => handleEditUser(user.id)}>Edit</button>
+          </div>
         </div>
       ))}
     </div>
