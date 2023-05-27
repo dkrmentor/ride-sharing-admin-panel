@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
-import { getDrivers, deleteDriver, createDriver, updateDriver } from '../api';
-import "../App.css"
+import React, { useEffect, useState } from "react";
+import { getDrivers, deleteDriver, createDriver, updateDriver } from "../api";
+import "../App.css";
 
 const Driver = () => {
   const [drivers, setDrivers] = useState([]);
@@ -64,23 +64,25 @@ const Driver = () => {
             type: carType,
           },
         });
-        setDrivers(drivers.map((driver) => {
-          if (driver.id === editDriverId) {
-            return {
-              ...driver,
-              name,
-              email,
-              phone,
-              car_details: {
-                car_model: carModel,
-                car_color: carColor,
-                car_number: carNumber,
-                type: carType,
-              },
-            };
-          }
-          return driver;
-        }));
+        setDrivers(
+          drivers.map((driver) => {
+            if (driver.id === editDriverId) {
+              return {
+                ...driver,
+                name,
+                email,
+                phone,
+                car_details: {
+                  car_model: carModel,
+                  car_color: carColor,
+                  car_number: carNumber,
+                  type: carType,
+                },
+              };
+            }
+            return driver;
+          })
+        );
         setEditDriverId(null);
       } else {
         // Create new driver
@@ -112,78 +114,88 @@ const Driver = () => {
   return (
     <div>
       <h3>Drivers</h3>
-      <div>
-        <label>Name:</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Phone:</label>
-        <input
-          type="text"
-          value={phone}
-          onChange={(e) => setPhone(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Car Model:</label>
-        <input
-          type="text"
-          value={carModel}
-          onChange={(e) => setCarModel(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Car Color:</label>
-        <input
-          type="text"
-          value={carColor}
-          onChange={(e) => setCarColor(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Car Number:</label>
-        <input
-          type="text"
-          value={carNumber}
-          onChange={(e) => setCarNumber(e.target.value)}
-        />
-      </div>
-      <div>
-        <label>Car Type:</label>
-        <input
-          type="text"
-          value={carType}
-          onChange={(e) => setCarType(e.target.value)}
-        />
-      </div>
-      <button onClick={handleCreateDriver}>
-        {editDriverId ? "Update Driver" : "Create Driver"}
-      </button>
-      {drivers.map((driver) => (
-        <div key={driver.id}>
-          <h4>{driver.name}</h4>
-          <p>{driver.email}</p>
-          <p>{driver.phone}</p>
-          <p>{driver.car_details.car_model}</p>
-          <p>{driver.car_details.car_color}</p>
-          <p>{driver.car_details.car_number}</p>
-          <p>{driver.car_details.type}</p>
-          <button onClick={() => handleDeleteDriver(driver.id)}>Delete</button>
-          <button onClick={() => handleEditDriver(driver.id)}>Edit</button>
+      <div className="driver-info">
+        <div>
+          <label>Name:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
-      ))}
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Phone:</label>
+          <input
+            type="text"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Car Model:</label>
+          <input
+            type="text"
+            value={carModel}
+            onChange={(e) => setCarModel(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Car Color:</label>
+          <input
+            type="text"
+            value={carColor}
+            onChange={(e) => setCarColor(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Car Number:</label>
+          <input
+            type="text"
+            value={carNumber}
+            onChange={(e) => setCarNumber(e.target.value)}
+          />
+        </div>
+        <div>
+          <label>Car Type:</label>
+          <input
+            type="text"
+            value={carType}
+            onChange={(e) => setCarType(e.target.value)}
+          />
+        </div>
+        <button onClick={handleCreateDriver}>
+          {editDriverId ? "Update Driver" : "Create Driver"}
+        </button>
+      </div>
+      <div className="driver-listings">
+        {drivers.map((driver) => (
+          <div className="driver-item" key={driver.id}>
+            <div className="driver-item-info">
+            <h4>{driver.name}</h4>
+            <p>{driver.email}</p>
+            <p>{driver.phone}</p>
+            <p>{driver.car_details.car_model}</p>
+            <p>{driver.car_details.car_color}</p>
+            <p>{driver.car_details.car_number}</p>
+            <p>{driver.car_details.type}</p>
+            </div>
+              <div className="user-actions">
+            <button onClick={() => handleEditDriver(driver.id)}>Edit</button>
+            <button onClick={() => handleDeleteDriver(driver.id)}>
+              Delete
+            </button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

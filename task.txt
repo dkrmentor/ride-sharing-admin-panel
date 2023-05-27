@@ -5,6 +5,6 @@ Driver management (create, read, update, delete)
 User management (create, read, update, delete)
 Rider history with status (pending, completed, declined)
 Active drivers
-Admin login and logout
+Admin login 
 
 

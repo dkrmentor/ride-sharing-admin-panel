@@ -45,12 +45,14 @@ const Users = () => {
       if (editUserId) {
         // Update existing user
         await updateUser(editUserId, { name, email, phoneNumber });
-        setUsers(users.map((user) => {
-          if (user.id === editUserId) {
-            return { ...user, name, email, phoneNumber };
-          }
-          return user;
-        }));
+        setUsers(
+          users.map((user) => {
+            if (user.id === editUserId) {
+              return { ...user, name, email, phoneNumber };
+            }
+            return user;
+          })
+        );
         setEditUserId(null);
       } else {
         // Create new user
@@ -68,44 +70,51 @@ const Users = () => {
   return (
     <div className="content-section">
       <h3>Users</h3>
-      <div className="form-group">
-        <label>Name:</label>
-        <input
-          type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-        />
-      </div>
-      <div className="form-group">
-        <label>Email:</label>
-        <input
-          type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-      </div>
-      <div className="form-group">
-        <label>Phone Number:</label>
-        <input
-          type="text"
-          value={phoneNumber}
-          onChange={(e) => setPhoneNumber(e.target.value)}
-        />
-      </div>
-      <button onClick={handleCreateUser}>
-        {editUserId ? "Update User" : "Create User"}
-      </button>
-      {users.map((user) => (
-        <div className="user-item" key={user.id}>
-          <h4>{user.name}</h4>
-          <p>{user.email}</p>
-          <p>{user.phoneNumber}</p>
-          <div className="user-actions">
-            <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
-            <button onClick={() => handleEditUser(user.id)}>Edit</button>
-          </div>
+
+      <div className="user-info">
+        <div className="form-group">
+          <label>Name:</label>
+          <input
+            type="text"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+          />
         </div>
-      ))}
+        <div className="form-group">
+          <label>Email:</label>
+          <input
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="form-group">
+          <label>Phone Number:</label>
+          <input
+            type="text"
+            value={phoneNumber}
+            onChange={(e) => setPhoneNumber(e.target.value)}
+          />
+        </div>
+        <button onClick={handleCreateUser}>
+          {editUserId ? "Update User" : "Create User"}
+        </button>
+      </div>
+      <div className="user-listings">
+        {users.map((user) => (
+          <div className="user-item" key={user.id}>
+             <div className="user-item-info">
+            <h4>{user.name}</h4>
+            <p>{user.email}</p>
+            <p>{user.phoneNumber}</p>
+            </div>
+            <div className="user-actions">
+              <button onClick={() => handleEditUser(user.id)}>Edit</button>
+              <button onClick={() => handleDeleteUser(user.id)}>Delete</button>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

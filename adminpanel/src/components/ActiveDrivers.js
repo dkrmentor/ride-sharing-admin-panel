@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { getActiveDrivers } from '../api';
+import React, { useEffect, useState } from "react";
+import { getActiveDrivers } from "../api";
 
 const ActiveDrivers = () => {
   const [activeDrivers, setActiveDrivers] = useState([]);
@@ -13,12 +13,14 @@ const ActiveDrivers = () => {
   return (
     <div className="content-section">
       <h3>Active Drivers</h3>
-      {activeDrivers.map((driver) => (
-        <div className="driver-item" key={driver.id}>
-          <p>{driver.latitude}</p>
-          <p>{driver.longitude}</p>
-        </div>
-      ))}
+      <div className="active-listings">
+        {activeDrivers.map((driver) => (
+          <div className="active-item" key={driver.id}>
+            <p>{driver.latitude}</p>
+            <p>{driver.longitude}</p>
+          </div>
+        ))}
+      </div>{" "}
     </div>
   );
 };

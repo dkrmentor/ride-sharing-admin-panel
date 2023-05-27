@@ -1,115 +1,204 @@
-/* App.css */
+/* Global Styles */
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .container {
-    display: flex;
-  }
-  
-  .sidebar {
-    width: 250px;
-    background-color: #333;
-    color: #fff;
-    padding: 20px;
-  }
-  
-  .logo {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .logo img {
-    width: 80%;
-    height: auto;
-  }
-  .layout-container{
-    display: flex;
-  }
-  
-  .divider {
-    height: 1px;
-    background-color: #fff;
-    margin-bottom: 20px;
-  }
-  
-  .nav-menu {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .nav-menu li {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    margin-bottom: 10px;
-  }
-  
-  .nav-menu li:hover {
-    background-color: #555;
-  }
-  
-  .nav-menu li span {
-    margin-left: 10px;
-  }
-  
-  .content-section {
-    padding: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 10px;
-  }
-  
-  .user-item {
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    padding: 10px;
-  }
-  
-  .user-actions button {
-    margin-left: 10px;
-  }
-  
-  .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  
-  .login-box {
-    width: 300px;
-    border: 1px solid #ccc;
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .login-box h2 {
-    margin-bottom: 20px;
-  }
-  
-  .login-box input {
-    width: 80%;
-    margin-bottom: 10px;
-    padding: 10px;
-  }
-  
-  .login-box button {
-    width: 100%;
-    padding: 10px;
-    background-color: #333;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  }
-  
-  .active-drivers .driver-item {
-    margin-bottom: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-  }
-  
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #333;
+
+}
+
+.layout-container {
+  display: flex;
+}
+
+.sidebar {
+  flex: 0 0 250px;
+  color: #fff;
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar li {
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.sidebar li:hover {
+  background-color: #555;
+}
+
+.sidebar a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  background-color: #f1f1f1;
+  height: 100vh;
+}
+
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header h2 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+}
+
+/* Forms */
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+button {
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 10px;
+}
+
+button:hover {
+  background-color: #555;
+}
+
+/* Listings */
+
+.listings {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.listing {
+  flex-basis: calc(33.33% - 20px);
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.listing h4 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+}
+
+.listing p {
+  margin: 10px 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.listing button {
+  background-color: #333;
+  color: #fff;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.listing button:hover {
+  background-color: #555;
+}
+
+/* //////////driver/////////// */
+.driver-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+}
+
+.driver-listings .driver-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid;
+  padding: 0px 20px;
+  justify-content: space-between;
+}
+.driver-item-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+/* //////////////////user////////////////// */
+.user-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  align-items: center;
+}
+
+.user-listings .user-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid;
+  justify-content: space-between;
+  padding: 0px 20px;
+}
+.user-item-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+/* //////////////////active-listing////////////////// */
+
+.active-listings .active-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border: 1px solid;
+  padding: 0px 20px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* //////////////////ride-listing////////////////// */
+
+.ride-listings .ride-item {
+  border: 1px solid;
+  padding: 0px 20px;
+  gap: 20px;
+}
