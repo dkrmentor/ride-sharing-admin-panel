@@ -15,7 +15,7 @@ const ActiveDrivers = () => {
       <h3>Active Drivers</h3>
       {activeDrivers.map((driver) => (
         <div key={driver.id}>
-          <h4>{driver.latitude}</h4>
+          <p>{driver.latitude}</p>
           <p>{driver.longitude}</p>
         </div>
       ))}

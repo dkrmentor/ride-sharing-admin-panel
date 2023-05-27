@@ -14,10 +14,18 @@ const RiderHistory = () => {
     <div>
       <h3>Rider History</h3>
       {riderHistory.map((ride) => (
-        <div key={ride.id}>
-          <h4>Ride ID: {ride.id}</h4>
+        <div key={ride.user_id}>
+          <h4>Ride ID: {ride.user_id}</h4>
           <p>Status: {ride.status}</p>
-          {/* Render other ride information */}
+          <p>Passenger Name: {ride.passenger_name}</p>
+          <p>Passenger Email: {ride.passenger_email}</p>
+          <p>Passenger Phone: {ride.passenger_phone}</p>
+          <p>Pickup Location: {ride.pickupLocation}</p>
+          <p>Drop-off Location: {ride.dropOffLocation}</p>
+          <p>From Latitude: {ride.fromLatitude}</p>
+          <p>From Longitude: {ride.fromLongitute}</p>
+          <p>To Latitude: {ride.toLatitude}</p>
+          <p>To Longitude: {ride.toLongitute}</p>
         </div>
       ))}
     </div>

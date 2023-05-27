@@ -110,7 +110,7 @@ export const updateUser = async (userId, userData) => {
 // Fetch rider history
 export const getRiderHistory = async () => {
   try {
-    const snapshot = await database.ref("rider_history").once("value");
+    const snapshot = await database.ref("requestRides").once("value");
     const riderHistoryData = snapshot.val() || {};
     const riderHistoryArray = Object.values(riderHistoryData);
     console.log("Rider History:", riderHistoryArray); // Log the rider history array
