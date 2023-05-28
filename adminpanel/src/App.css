@@ -1,11 +1,9 @@
 /* Global Styles */
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
   background-color: #333;
-
 }
 
 /* /////////////login////////////// */
@@ -28,7 +26,8 @@ body {
   margin-bottom: 20px;
 }
 
-.login-box input[type="text"] , .login-box input[type="password"] {
+.login-box input[type="text"],
+.login-box input[type="password"] {
   width: 80%;
   margin-bottom: 10px;
   padding: 10px;
@@ -43,9 +42,9 @@ body {
   cursor: pointer;
 }
 
-
 .layout-container {
   display: flex;
+  flex-wrap: wrap;
 }
 
 .sidebar {
@@ -78,11 +77,11 @@ body {
   flex: 1;
   padding: 20px;
   background-color: #f1f1f1;
-  height: 100vh;
+  min-height: 100vh;
+
 }
 
 /* Header */
-
 .header {
   display: flex;
   justify-content: space-between;
@@ -99,7 +98,6 @@ body {
 }
 
 /* Forms */
-
 .form-group {
   margin-bottom: 20px;
 }
@@ -134,7 +132,6 @@ button:hover {
 }
 
 /* Listings */
-
 .listings {
   display: flex;
   flex-wrap: wrap;
@@ -192,12 +189,14 @@ button:hover {
   border: 1px solid;
   padding: 0px 20px;
   justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .driver-item-info {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 /* //////////////////user////////////////// */
@@ -215,16 +214,17 @@ button:hover {
   border: 1px solid;
   justify-content: space-between;
   padding: 0px 20px;
+  flex-wrap: wrap;
 }
 
 .user-item-info {
   display: flex;
   align-items: center;
   gap: 20px;
+  flex-wrap: wrap;
 }
 
 /* //////////////////active-listing////////////////// */
-
 .active-listings .active-item {
   display: flex;
   gap: 20px;
@@ -236,9 +236,52 @@ button:hover {
 }
 
 /* //////////////////ride-listing////////////////// */
-
 .ride-listings .ride-item {
   border: 1px solid;
   padding: 0px 20px;
   gap: 20px;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+  .layout-container {
+    flex-direction: column;
+  }
+  .sidebar,
+  .content,
+  .listing{
+    width: 100%;
+  }
+
+  .sidebar,
+  .content,
+  .listing,
+  .driver-listings .driver-item,
+  .user-listings .user-item,
+  .active-listings .active-item,
+  .ride-listings .ride-item ,  .driver-listings .driver-item .driver-item-info,   .user-listings .user-item-info {
+    display: block;
+    
+  }
+
+  .listing,
+  .driver-listings .driver-item,
+  .user-listings .user-item,
+  .active-listings .active-item,
+  .ride-listings .ride-item {
+    margin: 0 0 20px;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .login-box,
+  .sidebar,
+  .content,
+  .listing,
+  .driver-listings .driver-item,
+  .user-listings .user-item,
+  .active-listings .active-item,
+  .ride-listings .ride-item {
+    padding: 10px;
+  }
 }
