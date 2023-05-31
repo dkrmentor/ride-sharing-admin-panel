@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Map, Marker, GoogleApiWrapper } from "google-maps-react";
 import { getActiveDrivers } from "../api";
 
 const ActiveDrivers = () => {
@@ -14,15 +15,23 @@ const ActiveDrivers = () => {
     <div className="content-section">
       <h3>Active Drivers</h3>
       <div className="active-listings">
-        {activeDrivers.map((driver) => (
-          <div className="active-item" key={driver.id}>
-            <p>{driver.latitude}</p>
-            <p>{driver.longitude}</p>
-          </div>
-        ))}
-      </div>{" "}
+        <Map
+          google={window.google}
+          zoom={10}
+          style={{ width: "100%", height: "400px" }}
+        >
+          {activeDrivers.map((driver) => (
+            <Marker
+              key={driver.id}
+              position={{ lat: driver.latitude, lng: driver.longitude }}
+            />
+          ))}
+        </Map>
+      </div>
     </div>
   );
 };
 
-export default ActiveDrivers;
+export default GoogleApiWrapper({
+  apiKey: "AIzaSyAk-ysCirVaLja0FPnaoyWgsrUp8gVwLzk" // Your Google Maps API key
+})(ActiveDrivers);

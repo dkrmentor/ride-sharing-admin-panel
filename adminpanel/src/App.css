@@ -225,14 +225,19 @@ button:hover {
 }
 
 /* //////////////////active-listing////////////////// */
-.active-listings .active-item {
+.active-listings  {
   display: flex;
   gap: 20px;
   align-items: center;
-  border: 1px solid;
-  padding: 0px 20px;
+  justify-content: space-around;
   flex-wrap: wrap;
   gap: 20px;
+}
+
+.active-listings .active-item {
+
+  border: 2px solid;
+
 }
 
 /* //////////////////ride-listing////////////////// */
