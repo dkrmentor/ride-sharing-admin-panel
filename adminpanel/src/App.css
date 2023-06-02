@@ -290,3 +290,28 @@ button:hover {
     padding: 10px;
   }
 }
+
+
+
+/* //////////////////////fixings //////////////////////// */
+@media only screen and (min-width: 768px) {
+  .logo{
+    margin: 10px;
+  }
+  .nav-menu span {
+    font-size: 20px;
+    line-height: 1.6;
+    font-weight: bold;
+  }
+  
+  
+  
+  
+  .content {
+    box-shadow: 0 0 10px 10px rgb(195 195 195 / 30%);
+    transition: box-shadow 0.2s ease-in-out;
+    border-radius: 20px;
+    margin: 20px;
+    width: 70%;
+  }
+  }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUsers, faClipboardList } from '@fortawesome/free-solid-svg-icons';
+import logo from '../assets/logo.jpg';
 
 export const Sidebar = () => {
   const navigate = useNavigate();
@@ -25,7 +26,7 @@ export const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="logo">
-        {/* <img src={logo} alt="Logo" /> */}
+        <img width={80} src={logo} alt="Logo" />
       </div>
       <div className="divider"></div>
       <nav>
