@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getDrivers, deleteDriver, createDriver, updateDriver } from "../api";
+import {
+  getDrivers,
+  deleteDriver,
+  createDriver,
+  updateDriver,
+  getDriverSchedule,
+  getFeedback,
+} from "../api";
 import "../App.css";
 
 const Driver = () => {
@@ -12,6 +19,8 @@ const Driver = () => {
   const [carNumber, setCarNumber] = useState("");
   const [carType, setCarType] = useState("");
   const [editDriverId, setEditDriverId] = useState(null);
+  const [driverSchedule, setDriverSchedule] = useState({});
+  const [Feedback, setFeedback] = useState({});
 
   useEffect(() => {
     loadDrivers();
@@ -21,6 +30,10 @@ const Driver = () => {
     try {
       const driversData = await getDrivers();
       setDrivers(driversData);
+      const scheduleData = await getDriverSchedule();
+      setDriverSchedule(scheduleData);
+      const FeedbackData = await getFeedback();
+      setFeedback(FeedbackData);
     } catch (error) {
       console.log("Error fetching drivers:", error);
     }
@@ -111,6 +124,130 @@ const Driver = () => {
     }
   };
 
+  const handleDriverSchedule = (driverId) => {
+    const schedule = driverSchedule[driverId];
+    console.log("schedule", schedule);
+    if (schedule) {
+      const scheduleKeys = Object.keys(schedule);
+      console.log("scheduleKeys", scheduleKeys);
+      // Show the modal with the schedule
+      const popup = document.createElement("div");
+      popup.classList.add("btnPopup-overlay");
+
+      const popupContent = document.createElement("div");
+      popupContent.classList.add("btnPopup-popup");
+
+      const closeBtn = document.createElement("span");
+      closeBtn.classList.add("btnPopup-close-btn");
+      closeBtn.innerHTML = "&#x2716;"; // Unicode for the cross (X) symbol
+      closeBtn.onclick = () => {
+        document.body.removeChild(popup);
+      };
+
+      popupContent.appendChild(closeBtn);
+
+      const scheduleContent = document.createElement("div");
+      scheduleContent.classList.add("btnPopup-content");
+      scheduleKeys.forEach((key) => {
+        const scheduleItem = document.createElement("div");
+        scheduleItem.classList.add("btnPopup-item");
+        const scheduleData = schedule[key];
+        const { date, fromLocation, time, toLocation } = scheduleData;
+        console.log("scheduleData", scheduleData);
+        console.log("date", scheduleData.date);
+
+        const scheduleTextElement = document.createElement("p");
+        // scheduleTextElement.textContent = `Schedule`;
+
+        // Create elements for each information
+        const dateElement = document.createElement("p");
+        dateElement.textContent = `Date: ${date}`;
+
+        const fromLocationElement = document.createElement("p");
+        fromLocationElement.textContent = `From Location: ${fromLocation}`;
+
+        const timeElement = document.createElement("p");
+        timeElement.textContent = `Time: ${time}`;
+
+        const toLocationElement = document.createElement("p");
+        toLocationElement.textContent = `To Location: ${toLocation}`;
+
+        scheduleItem.appendChild(scheduleTextElement);
+        scheduleItem.appendChild(dateElement);
+        scheduleItem.appendChild(fromLocationElement);
+        scheduleItem.appendChild(timeElement);
+        scheduleItem.appendChild(toLocationElement);
+
+        scheduleContent.appendChild(scheduleItem);
+      });
+      popupContent.appendChild(scheduleContent);
+      popup.appendChild(popupContent);
+
+      document.body.appendChild(popup);
+    } else {
+      // Display a message if there is no schedule
+      console.log("No schedule available for this driver.");
+      window.alert("No schedule available for this driver."); // Display a popup with the message
+      // Implement your logic to display the message (e.g., a toast notification)
+    }
+  };
+  const handleOpenFeedback = (driverId) => {
+    const feedback = Feedback[driverId];
+    console.log("feedback: ", feedback);
+    if (feedback) {
+      const feedbackKeys = Object.keys(feedback);
+      console.log("feedbackKeys: ", feedbackKeys);
+      // Show the popup with the feedback
+      const popup = document.createElement("div");
+      popup.classList.add("btnPopup-overlay");
+
+      const popupContent = document.createElement("div");
+      popupContent.classList.add("btnPopup-popup");
+
+      const closeBtn = document.createElement("span");
+      closeBtn.classList.add("btnPopup-close-btn");
+      closeBtn.innerHTML = "&#x2716;"; // Unicode for the cross (X) symbol
+      closeBtn.onclick = () => {
+        document.body.removeChild(popup);
+      };
+
+      popupContent.appendChild(closeBtn);
+
+      const feedbackContent = document.createElement("div");
+      feedbackContent.classList.add("btnPopup-content");
+
+      feedbackKeys.forEach((key) => {
+        const feedbackItem = document.createElement("div");
+        feedbackItem.classList.add("btnPopup-item");
+
+        const feedbackData = feedback[key];
+        const { feedback: feedbackText, rating } = feedbackData;
+
+        const feedbackTextElement = document.createElement("p");
+        feedbackTextElement.textContent = `Feedback: ${feedbackText}`;
+
+        const ratingElement = document.createElement("p");
+        ratingElement.classList.add("btnPopup-rating");
+        ratingElement.textContent = `Rating: ${rating}`;
+
+        feedbackItem.appendChild(feedbackTextElement);
+        feedbackItem.appendChild(ratingElement);
+
+        feedbackContent.appendChild(feedbackItem);
+      });
+
+      popupContent.appendChild(feedbackContent);
+      popup.appendChild(popupContent);
+
+      document.body.appendChild(popup);
+    } else {
+      // Display a message if there is no feedback
+      console.log("No feedback available for this user.");
+      window.alert("No feedback available for this user."); // Display a popup with the message
+      // Implement your logic to display the message (e.g., a toast notification)
+    }
+  };
+
   return (
     <div>
       <h3>Drivers</h3>
@@ -179,19 +316,29 @@ const Driver = () => {
         {drivers.map((driver) => (
           <div className="driver-item" key={driver.id}>
             <div className="driver-item-info">
-            <h4>{driver.name}</h4>
-            <p>{driver.email}</p>
-            <p>{driver.phone}</p>
-            <p>{driver.car_details.car_model}</p>
-            <p>{driver.car_details.car_color}</p>
-            <p>{driver.car_details.car_number}</p>
-            <p>{driver.car_details.type}</p>
+              <h4>{driver.name}</h4>
+              <p>{driver.email}</p>
+              <p>{driver.phone}</p>
+              {driver.car_details && (
+                <>
+                  <p>{driver.car_details.car_model}</p>
+                  <p>{driver.car_details.car_color}</p>
+                  <p>{driver.car_details.car_number}</p>
+                  <p>{driver.car_details.type}</p>
+                </>
+              )}
             </div>
-              <div className="user-actions">
-            <button onClick={() => handleEditDriver(driver.id)}>Edit</button>
-            <button onClick={() => handleDeleteDriver(driver.id)}>
-              Delete
-            </button>
+            <div className="user-actions">
+              <button onClick={() => handleEditDriver(driver.id)}>Edit</button>
+              <button onClick={() => handleDeleteDriver(driver.id)}>
+                Delete
+              </button>
+              <button onClick={() => handleDriverSchedule(driver.id)}>
+                Driver Schedule
+              </button>
+              <button onClick={() => handleOpenFeedback(driver.id)}>
+                Feedback
+              </button>
             </div>
           </div>
         ))}

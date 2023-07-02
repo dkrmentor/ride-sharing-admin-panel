@@ -120,7 +120,7 @@ export const getRiderHistory = async () => {
     return [];
   }
 };
-// Get active drivers
+// fetch active drivers
 export const getActiveDrivers = async () => {
   try {
     const snapshot = await database.ref("activeDrivers").once("value");
@@ -136,5 +136,34 @@ export const getActiveDrivers = async () => {
   } catch (error) {
     console.log("Error fetching active drivers:", error);
     return [];
+  }
+};
+
+// Fetch  feedback
+
+export const getFeedback = async () => {
+  try {
+    const snapshot = await database.ref("feedback").once("value");
+    const feedbackData = snapshot.val() || {};
+    console.log("feedback:", feedbackData); // Log the  feedback data
+    return feedbackData;
+  } catch (error) {
+    console.log("Error fetching feedback:", error);
+    return {};
+  }
+};
+
+
+
+
+export const getDriverSchedule = async () => {
+  try {
+    const snapshot = await database.ref("schedule").once("value");
+    const scheduleData = snapshot.val() || {};
+    console.log(" schedule:", scheduleData); // Log the  schedule data
+    return scheduleData;
+  } catch (error) {
+    console.log("Error fetching  schedule:", error);
+    return {};
   }
 };

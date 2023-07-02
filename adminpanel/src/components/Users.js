@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { getUsers, deleteUser, createUser, updateUser } from "../api";
+import { getUsers, deleteUser, createUser, updateUser} from "../api";
+import "../App.css";
 
 const Users = () => {
   const [users, setUsers] = useState([]);
@@ -67,6 +68,7 @@ const Users = () => {
     }
   };
 
+
   return (
     <div className="content-section">
       <h3>Users</h3>
@@ -103,10 +105,10 @@ const Users = () => {
       <div className="user-listings">
         {users.map((user) => (
           <div className="user-item" key={user.id}>
-             <div className="user-item-info">
-            <h4>{user.name}</h4>
-            <p>{user.email}</p>
-            <p>{user.phoneNumber}</p>
+            <div className="user-item-info">
+              <h4>{user.name}</h4>
+              <p>{user.email}</p>
+              <p>{user.phoneNumber}</p>
             </div>
             <div className="user-actions">
               <button onClick={() => handleEditUser(user.id)}>Edit</button>
