@@ -316,15 +316,16 @@ const Driver = () => {
         {drivers.map((driver) => (
           <div className="driver-item" key={driver.id}>
             <div className="driver-item-info">
-              <h4>{driver.name}</h4>
-              <p>{driver.email}</p>
-              <p>{driver.phone}</p>
+        
+              <p><span class="bold-text">Name:</span>{driver.name}</p>
+              <p><span class="bold-text">Email:</span>{driver.email}</p>
+              <p><span class="bold-text">Contact No:</span>{driver.phone}</p>
               {driver.car_details && (
                 <>
-                  <p>{driver.car_details.car_model}</p>
-                  <p>{driver.car_details.car_color}</p>
-                  <p>{driver.car_details.car_number}</p>
-                  <p>{driver.car_details.type}</p>
+                  <p><span class="bold-text">Car Model:</span>{driver.car_details.car_model}</p>
+                  <p><span class="bold-text">Car Color:</span>{driver.car_details.car_color}</p>
+                  <p><span class="bold-text">Car Number:</span>{driver.car_details.car_number}</p>
+                  <p><span class="bold-text">Car Type:</span>{driver.car_details.type}</p>
                 </>
               )}
             </div>

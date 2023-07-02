@@ -1,7 +1,7 @@
 Real-time Firebase database
 The admin panel will have the following features:
 
-Driver management (create, read, update, delete)
+Driver management (create, read, update, delete , driver schedule , users feedback)
 User management (create, read, update, delete)
 Rider history with status (pending, completed, declined)
 Active drivers

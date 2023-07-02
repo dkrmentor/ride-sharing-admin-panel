@@ -106,9 +106,9 @@ const Users = () => {
         {users.map((user) => (
           <div className="user-item" key={user.id}>
             <div className="user-item-info">
-              <h4>{user.name}</h4>
-              <p>{user.email}</p>
-              <p>{user.phoneNumber}</p>
+              <p><span class="bold-text">Name:</span>{user.name}</p>
+              <p><span class="bold-text">Email:</span>{user.email}</p>
+              <p><span class="bold-text">Contact No:</span>{user.phoneNumber}</p>
             </div>
             <div className="user-actions">
               <button onClick={() => handleEditUser(user.id)}>Edit</button>

@@ -16,17 +16,21 @@ const RiderHistory = () => {
       <div className="ride-listings">
         {riderHistory.map((ride) => (
           <div className="ride-item" key={ride.user_id}>
-            <h4>Ride ID: {ride.user_id}</h4>
-            <p>Status: {ride.status}</p>
-            <p>Passenger Name: {ride.passenger_name}</p>
-            <p>Passenger Email: {ride.passenger_email}</p>
-            <p>Passenger Phone: {ride.passenger_phone}</p>
-            <p>Pickup Location: {ride.pickupLocation}</p>
-            <p>Drop-off Location: {ride.dropOffLocation}</p>
-            <p>From Latitude: {ride.fromLatitude}</p>
-            <p>From Longitude: {ride.fromLongitute}</p>
-            <p>To Latitude: {ride.toLatitude}</p>
-            <p>To Longitude: {ride.toLongitute}</p>
+            <p><span class="bold-text">Rider ID:</span> {ride.driver_id}</p>
+            <p><span class="bold-text">Rider Name:</span> {ride.driver_name}</p>
+
+            <p><span class="bold-text">Status:</span> {ride.status}</p>
+            <p><span class="bold-text">User ID:</span> {ride.user_id}</p>
+
+            <p><span class="bold-text">Passenger Name:</span> {ride.passenger_name}</p>
+            <p><span class="bold-text">Passenger Email:</span> {ride.passenger_email}</p>
+            <p><span class="bold-text">Passenger Phone:</span> {ride.passenger_phone}</p>
+            <p><span class="bold-text">Pickup Location:</span> {ride.pickupLocation}</p>
+            <p><span class="bold-text">Drop-off Location:</span> {ride.dropOffLocation}</p>
+            <p><span class="bold-text">From Latitude:</span>{ride.fromLatitude}</p>
+            <p><span class="bold-text">To Latitude:</span>{ride.toLatitude}</p>
+            <p><span class="bold-text">From Longitude:</span> {ride.fromLongitute}</p>
+            <p><span class="bold-text">To Longitude:</span> {ride.toLongitute}</p>
           </div>
         ))}
       </div>
