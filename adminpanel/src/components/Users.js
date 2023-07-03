@@ -6,7 +6,7 @@ const Users = () => {
   const [users, setUsers] = useState([]);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [phoneNumber, setPhoneNumber] = useState("");
+  const [phone, setphone] = useState("");
   const [editUserId, setEditUserId] = useState(null);
 
   useEffect(() => {
@@ -36,7 +36,7 @@ const Users = () => {
     if (userToEdit) {
       setName(userToEdit.name);
       setEmail(userToEdit.email);
-      setPhoneNumber(userToEdit.phoneNumber);
+      setphone(userToEdit.phone);
       setEditUserId(userId);
     }
   };
@@ -45,11 +45,11 @@ const Users = () => {
     try {
       if (editUserId) {
         // Update existing user
-        await updateUser(editUserId, { name, email, phoneNumber });
+        await updateUser(editUserId, { name, email, phone });
         setUsers(
           users.map((user) => {
             if (user.id === editUserId) {
-              return { ...user, name, email, phoneNumber };
+              return { ...user, name, email, phone };
             }
             return user;
           })
@@ -57,12 +57,12 @@ const Users = () => {
         setEditUserId(null);
       } else {
         // Create new user
-        const newUser = await createUser({ name, email, phoneNumber });
+        const newUser = await createUser({ name, email, phone });
         setUsers([...users, newUser]);
       }
       setName("");
       setEmail("");
-      setPhoneNumber("");
+      setphone("");
     } catch (error) {
       console.log("Error creating/updating user:", error);
     }
@@ -94,8 +94,8 @@ const Users = () => {
           <label>Phone Number:</label>
           <input
             type="text"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            value={phone}
+            onChange={(e) => setphone(e.target.value)}
           />
         </div>
         <button onClick={handleCreateUser}>
@@ -108,7 +108,7 @@ const Users = () => {
             <div className="user-item-info">
               <p><span class="bold-text">Name:</span>{user.name}</p>
               <p><span class="bold-text">Email:</span>{user.email}</p>
-              <p><span class="bold-text">Contact No:</span>{user.phoneNumber}</p>
+              <p><span class="bold-text">Contact No:</span>{user.phone}</p>
             </div>
             <div className="user-actions">
               <button onClick={() => handleEditUser(user.id)}>Edit</button>
