@@ -128,61 +128,86 @@ const Driver = () => {
     const schedule = driverSchedule[driverId];
     console.log("schedule", schedule);
     if (schedule) {
-      const scheduleKeys = Object.keys(schedule);
-      console.log("scheduleKeys", scheduleKeys);
+      const {
+        availableSeats,
+        date,
+        driver_id,
+        fares,
+        fromLocation,
+        isDaily,
+        seats,
+        time,
+        toLocation,
+      } = schedule;
+  
       // Show the modal with the schedule
       const popup = document.createElement("div");
       popup.classList.add("btnPopup-overlay");
-
+  
       const popupContent = document.createElement("div");
       popupContent.classList.add("btnPopup-popup");
-
+  
       const closeBtn = document.createElement("span");
       closeBtn.classList.add("btnPopup-close-btn");
       closeBtn.innerHTML = "&#x2716;"; // Unicode for the cross (X) symbol
       closeBtn.onclick = () => {
         document.body.removeChild(popup);
       };
-
+  
       popupContent.appendChild(closeBtn);
-
+  
       const scheduleContent = document.createElement("div");
       scheduleContent.classList.add("btnPopup-content");
-      scheduleKeys.forEach((key) => {
-        const scheduleItem = document.createElement("div");
-        scheduleItem.classList.add("btnPopup-item");
-        const scheduleData = schedule[key];
-        const { date, fromLocation, time, toLocation } = scheduleData;
-        console.log("scheduleData", scheduleData);
-        console.log("date", scheduleData.date);
-
-        const scheduleTextElement = document.createElement("p");
-        // scheduleTextElement.textContent = `Schedule`;
-
-        // Create elements for each information
-        const dateElement = document.createElement("p");
-        dateElement.textContent = `Date: ${date}`;
-
-        const fromLocationElement = document.createElement("p");
-        fromLocationElement.textContent = `From Location: ${fromLocation}`;
-
-        const timeElement = document.createElement("p");
-        timeElement.textContent = `Time: ${time}`;
-
-        const toLocationElement = document.createElement("p");
-        toLocationElement.textContent = `To Location: ${toLocation}`;
-
-        scheduleItem.appendChild(scheduleTextElement);
-        scheduleItem.appendChild(dateElement);
-        scheduleItem.appendChild(fromLocationElement);
-        scheduleItem.appendChild(timeElement);
-        scheduleItem.appendChild(toLocationElement);
-
-        scheduleContent.appendChild(scheduleItem);
-      });
+  
+      const scheduleItem = document.createElement("div");
+      scheduleItem.classList.add("btnPopup-item");
+  
+      const scheduleTextElement = document.createElement("p");
+      scheduleTextElement.textContent = `Schedule`;
+  
+      // Create elements for each information
+      const availableSeatsElement = document.createElement("p");
+      availableSeatsElement.textContent = `Available Seats: ${availableSeats}`;
+  
+      const dateElement = document.createElement("p");
+      dateElement.textContent = `Date: ${date}`;
+  
+      const driverIdElement = document.createElement("p");
+      driverIdElement.textContent = `Driver ID: ${driver_id}`;
+  
+      const faresElement = document.createElement("p");
+      faresElement.textContent = `Fares: ${fares}`;
+  
+      const fromLocationElement = document.createElement("p");
+      fromLocationElement.textContent = `From Location: ${fromLocation}`;
+  
+      const isDailyElement = document.createElement("p");
+      isDailyElement.textContent = `Is Daily: ${isDaily}`;
+  
+      const seatsElement = document.createElement("p");
+      seatsElement.textContent = `Seats: ${seats}`;
+  
+      const timeElement = document.createElement("p");
+      timeElement.textContent = `Time: ${time}`;
+  
+      const toLocationElement = document.createElement("p");
+      toLocationElement.textContent = `To Location: ${toLocation}`;
+  
+      scheduleItem.appendChild(scheduleTextElement);
+      scheduleItem.appendChild(availableSeatsElement);
+      scheduleItem.appendChild(dateElement);
+      scheduleItem.appendChild(driverIdElement);
+      scheduleItem.appendChild(faresElement);
+      scheduleItem.appendChild(fromLocationElement);
+      scheduleItem.appendChild(isDailyElement);
+      scheduleItem.appendChild(seatsElement);
+      scheduleItem.appendChild(timeElement);
+      scheduleItem.appendChild(toLocationElement);
+  
+      scheduleContent.appendChild(scheduleItem);
       popupContent.appendChild(scheduleContent);
       popup.appendChild(popupContent);
-
+  
       document.body.appendChild(popup);
     } else {
       // Display a message if there is no schedule
@@ -191,6 +216,8 @@ const Driver = () => {
       // Implement your logic to display the message (e.g., a toast notification)
     }
   };
+  
+  
   const handleOpenFeedback = (driverId) => {
     const feedback = Feedback[driverId];
     console.log("feedback: ", feedback);
