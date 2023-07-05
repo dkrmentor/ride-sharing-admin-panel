@@ -167,31 +167,31 @@ const Driver = () => {
   
       // Create elements for each information
       const availableSeatsElement = document.createElement("p");
-      availableSeatsElement.textContent = `Available Seats: ${availableSeats}`;
+      availableSeatsElement.innerHTML = `<strong>Available Seats:</strong> ${availableSeats}`;
   
       const dateElement = document.createElement("p");
-      dateElement.textContent = `Date: ${date}`;
+      dateElement.innerHTML = `<strong>Date:</strong> ${date}`;
   
       const driverIdElement = document.createElement("p");
-      driverIdElement.textContent = `Driver ID: ${driver_id}`;
+      driverIdElement.innerHTML = `<strong>Driver ID:</strong> ${driver_id}`;
   
       const faresElement = document.createElement("p");
-      faresElement.textContent = `Fares: ${fares}`;
+      faresElement.innerHTML = `<strong>Fares:</strong> ${fares}`;
   
       const fromLocationElement = document.createElement("p");
-      fromLocationElement.textContent = `From Location: ${fromLocation}`;
+      fromLocationElement.innerHTML = `<strong>From Location:</strong> ${fromLocation}`;
   
       const isDailyElement = document.createElement("p");
-      isDailyElement.textContent = `Is Daily: ${isDaily}`;
+      isDailyElement.innerHTML = `<strong>Is Daily:</strong> ${isDaily}`;
   
       const seatsElement = document.createElement("p");
-      seatsElement.textContent = `Seats: ${seats}`;
+      seatsElement.innerHTML = `<strong>Seats:</strong> ${seats}`;
   
       const timeElement = document.createElement("p");
-      timeElement.textContent = `Time: ${time}`;
+      timeElement.innerHTML = `<strong>Time:</strong> ${time}`;
   
       const toLocationElement = document.createElement("p");
-      toLocationElement.textContent = `To Location: ${toLocation}`;
+      toLocationElement.innerHTML = `<strong>To Location:</strong> ${toLocation}`;
   
       scheduleItem.appendChild(scheduleTextElement);
       scheduleItem.appendChild(availableSeatsElement);
@@ -216,6 +216,7 @@ const Driver = () => {
       // Implement your logic to display the message (e.g., a toast notification)
     }
   };
+  
   
   
   const handleOpenFeedback = (driverId) => {
